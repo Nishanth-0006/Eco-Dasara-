@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco-Dasara Waste Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f2e1d 0%, #1a4d2e 50%, #2d5a3d 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(81, 199, 132, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #ffffff 0%, #f0fff4 100%);
+            border-radius: 30px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
+                       0 0 0 1px rgba(34, 197, 94, 0.2);
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            margin-bottom: 40px;
+        }
+
+        .header-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        h1 {
+            background: linear-gradient(135deg, #0f5e20 0%, #22c55e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 42px;
+            margin-bottom: 10px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: #66bb6a;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .input-section {
+            margin-bottom: 35px;
+            text-align: left;
+        }
+
+        .input-group {
+            margin-bottom: 28px;
+        }
+
+        label {
+            display: block;
+            color: #0f5e20;
+            font-weight: 700;
+            margin-bottom: 12px;
+            font-size: 16px;
+            letter-spacing: 0.3px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #c8e6c9;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #f1f8f6 0%, #e8f5e9 100%);
+            color: #0f5e20;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #22c55e;
+            background: #f0fff4;
+            box-shadow: 0 0 12px rgba(34, 197, 94, 0.3);
+            transform: translateY(-2px);
+        }
+
+        input[type="number"]::placeholder {
+            color: #a8d5ba;
+        }
+
+        .camera-btn {
+            width: 100%;
+            padding: 20px 30px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            letter-spacing: 1px;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 12px 35px rgba(238, 90, 111, 0.3);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .camera-btn:hover {
+            background: linear-gradient(135deg, #ee5a6f 0%, #e84c5c 100%);
+            transform: translateY(-5px);
+            box-shadow: 0 18px 50px rgba(238, 90, 111, 0.4);
+        }
+
+        .camera-btn:active {
+            transform: translateY(-2px);
+        }
+
+        .reward-btn {
+            width: 100%;
+            padding: 20px 30px;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 12px 35px rgba(34, 197, 94, 0.3);
+            margin-top: 20px;
+        }
+
+        .reward-btn:hover {
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+            transform: translateY(-5px);
+            box-shadow: 0 18px 50px rgba(34, 197, 94, 0.4);
+        }
+
+        .reward-btn:active {
+            transform: translateY(-2px);
+        }
+
+        .camera-preview {
+            background: linear-gradient(135deg, #ffe8e8 0%, #fff0f2 100%);
+            border: 2px solid #ff9aa2;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            color: #c41e3a;
+            font-size: 14px;
+            font-weight: 600;
+            animation: slideIn 0.3s ease;
+        }
+
+        .camera-preview.hidden {
+            display: none;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 35px 25px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .header-icon {
+                font-size: 50px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .photo-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <div class="header-icon">♻️</div>
+                <h1>Eco-Dasara Waste</h1>
+                <p class="subtitle">Transform Your Recycling Into Rewards</p>
+            </div>
+
+            <button class="camera-btn" onclick="openCamera()">📷 Capture Waste Photo</button>
+
+            <div class="input-section">
+                <div class="input-group">
+                    <label>♻️ Number of Plastic Bottles</label>
+                    <input 
+                        type="number" 
+                        id="plasticBottles" 
+                        placeholder="Enter number" 
+                        min="0"
+                        max="999"
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label>🔩 Number of Steel Bottles</label>
+                    <input 
+                        type="number" 
+                        id="steelBottles" 
+                        placeholder="Enter number" 
+                        min="0"
+                        max="999"
+                    >
+                </div>
+            </div>
+
+            <div id="cameraPreview" class="camera-preview hidden">
+                <div id="cameraContainer" style="display: none;">
+                    <video id="cameraVideo" autoplay playsinline style="width: 100%; border-radius: 12px; margin-bottom: 15px; max-height: 400px; background: #000;"></video>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="capturePhoto()" style="flex: 1; padding: 12px; background: #22c55e; color: white; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; font-family: Poppins;">📸 Capture Photo</button>
+                        <button onclick="closeCamera()" style="flex: 1; padding: 12px; background: #ef4444; color: white; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; font-family: Poppins;">✕ Close</button>
+                    </div>
+                </div>
+                <canvas id="captureCanvas" style="display: none;"></canvas>
+                <p id="cameraStatus"></p>
+                <img id="capturedImage" style="display: none; width: 100%; border-radius: 12px; margin-top: 10px;">
+            </div>
+
+            <button class="reward-btn" onclick="generateReward()">Get Reward</button>
+        </div>
+    </div>
+
+    <script>
+        const coupons = [
+            'DASARA10',
+            'ECO20',
+            'GREEN50',
+            'RECYCLE30',
+            'SAVE15',
+            'FESTIVE25'
+        ];
+
+        let cameraStream = null;
+
+        function getRandomCoupon() {
+            return coupons[Math.floor(Math.random() * coupons.length)];
+        }
+
+        function openCamera() {
+            const preview = document.getElementById('cameraPreview');
+            const status = document.getElementById('cameraStatus');
+            const cameraContainer = document.getElementById('cameraContainer');
+            const video = document.getElementById('cameraVideo');
+            
+            preview.classList.remove('hidden');
+            
+            // Request camera access
+            navigator.mediaDevices.getUserMedia({
+                video: { 
+                    facingMode: 'environment',
+                    width: { ideal: 1280 },
+                    height: { ideal: 720 }
+                }
+            })
+            .then(stream => {
+                cameraStream = stream;
+                video.srcObject = stream;
+                cameraContainer.style.display = 'block';
+                status.style.display = 'none';
+            })
+            .catch(error => {
+                status.style.display = 'block';
+                cameraContainer.style.display = 'none';
+                status.innerHTML = `<span style="color: #c41e3a;">❌ Camera error: ${error.message}</span>`;
+                console.error('Camera error:', error);
+            });
+            
+            preview.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function capturePhoto() {
+            const canvas = document.getElementById('captureCanvas');
+            const video = document.getElementById('cameraVideo');
+            const capturedImage = document.getElementById('capturedImage');
+            const cameraContainer = document.getElementById('cameraContainer');
+            const status = document.getElementById('cameraStatus');
+            
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0, 0);
+            
+            const imageDataUrl = canvas.toDataURL('image/jpeg');
+            capturedImage.src = imageDataUrl;
+            capturedImage.style.display = 'block';
+            
+            cameraContainer.style.display = 'none';
+            status.innerHTML = `<span style="color: #22c55e;">✅ Photo captured successfully! Ready to continue.</span>`;
+            status.style.display = 'block';
+            
+            // Close camera stream
+            if (cameraStream) {
+                cameraStream.getTracks().forEach(track => track.stop());
+                cameraStream = null;
+            }
+        }
+
+        function closeCamera() {
+            const preview = document.getElementById('cameraPreview');
+            const cameraContainer = document.getElementById('cameraContainer');
+            const status = document.getElementById('cameraStatus');
+            
+            if (cameraStream) {
+                cameraStream.getTracks().forEach(track => track.stop());
+                cameraStream = null;
+            }
+            
+            cameraContainer.style.display = 'none';
+            status.innerHTML = `<span style="color: #666;">Camera closed.</span>`;
+            preview.classList.add('hidden');
+        }
+
+        function generateReward() {
+            const plasticBottles = parseInt(document.getElementById('plasticBottles').value) || 0;
+            const steelBottles = parseInt(document.getElementById('steelBottles').value) || 0;
+            const totalBottles = plasticBottles + steelBottles;
+
+            if (totalBottles === 0) {
+                alert('Please enter at least one bottle!');
+                return;
+            }
+
+            const coupon = getRandomCoupon();
+            const carbonSaved = (totalBottles * 0.05).toFixed(2);
+
+            const rewardData = {
+                coupon: coupon,
+                plastic: plasticBottles,
+                steel: steelBottles,
+                total: totalBottles,
+                carbon: carbonSaved,
+                images: 0
+            };
+
+            localStorage.setItem('rewardData', JSON.stringify(rewardData));
+            window.location.href = 'rewards.html';
+        }
+
+        // Allow Enter key to generate reward
+        document.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                generateReward();
+            }
+        });
+    </script>
+</body>
+</html>
